@@ -10,7 +10,7 @@
 .nds
 .arm
 
-.definelabel MaxSize, 0x80 ; calculated 0x78- giving a bit of wiggle room in case i was wrong.
+.definelabel MaxSize, 0x84
 
 ; Uncomment the correct version
 
@@ -20,7 +20,7 @@
 ;.definelabel ProcJumpAddress, 0x22E7AC0
 ;.definelabel AssemblyPointer, 0x20B0A48
 ;.definelabel GetEvolutions, 0x2053E88
-;.definelabel SaveScriptVariableValue, 0x204B820
+;.definelabel SaveScriptVariableValueAtIndex, 0x204B988
 
 ; For EU
 .include "lib/stdlib_eu.asm"
@@ -28,7 +28,7 @@
 .definelabel ProcJumpAddress, 0x22E8400
 .definelabel AssemblyPointer, 0x20B138C
 .definelabel GetEvolutions, 0x2054204
-.definelabel SaveScriptVariableValue, 0x204BB58
+.definelabel SaveScriptVariableValueAtIndex, 0x204BCC0
 
 ; File creation
 .create "./code_out.bin", 0x22E7B88 ; For US: 0x22E7248
@@ -40,10 +40,18 @@
 		ldr r6,[r6]
 		MonsterUpdateLoop:
 			ldrh r5,[r6,#+0x4] ; Species of assembly index [iterator] to r5
-			; r0 doesn't matter for SaveScriptVariableValue
+			; the next 11 lines contain HEAVY amounts of jank. this is my punishment for using a uint8[2] as a uint16.
+			; r0 doesn't matter for SaveScriptVariableValueAtIndex
 			add r1,r4,#0x5 ; save to script variable [5 + iterator] (starts at SUB1)
-			mov r2,r5 ; we want to save the species value
-			bl SaveScriptVariableValue ; save the value!
+			mov r2,#0 ; first half of SUBX
+			mov r3,r5 ; we want to save the first byte of the species value
+			and r3,r3,#0b11111111 ; only save *1 BYTE*
+			bl SaveScriptVariableValueAtIndex ; save the value!
+			; do the same thing but for the second byte in the ID, and to the second half of the SUBX var
+			add r1,r4,#0x5
+			mov r2,#1
+			mov r3,r5,lsr #8
+			bl SaveScriptVariableValueAtIndex ; save the value!
 			sub sp,sp,#0x28 ; allocate 28 bytes of space on the stack for the GetEvolutions output
 			EvoLoop:
 				mov r0,r5 ; check evolutions of current (r5) species
