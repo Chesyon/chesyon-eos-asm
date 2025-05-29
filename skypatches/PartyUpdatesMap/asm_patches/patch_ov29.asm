@@ -4,6 +4,6 @@
     push r4
     ldrb r4,[r0,#0x7] ; is_team_leader to r4
     ldrb r0,[r0,#0x6] ; is_not_team_member to r0
-    cmp r0,#0x1
-    b PartyCheck
+    cmp  r0,#0x1
+    b    PartyCheck
 .endarea

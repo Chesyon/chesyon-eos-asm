@@ -5,4 +5,4 @@
 .endarea
 
 .org huh
-	add r1, r1, 0x1
+	add r1,r1,0x1

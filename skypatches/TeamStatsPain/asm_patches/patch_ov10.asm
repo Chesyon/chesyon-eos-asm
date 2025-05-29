@@ -1,6 +1,6 @@
 .org HookPoint
 .area 0x4
-	b CheckHpForPortrait
+	b   CheckHpForPortrait
 .endarea
 
 .org UpdateCheck
