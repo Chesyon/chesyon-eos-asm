@@ -1,4 +1,4 @@
-.org 0x23A7080+0x30F70 ; starting point of free area in overlay 36. IF YOU ALREADY HAVE SKYPATCHES APPLIED THAT USE OVERLAY 36, YOU WILL NEED TO ADJUST THIS NUMBER!
+.orga 0x1B70
 .area 0x20
 
 CheckHpForPortrait:
