@@ -19,7 +19,7 @@
             <Include filename ="patch_ov36.asm"/>
           </OpenBin>
           <Parameters>
-            <Param name="StringID" label="String ID for push dialogue" min="0" max="65535" default="9240" type="int"/>
+            <Param name="StringID" label="String ID for alert text" min="0" max="65535" default="9240" type="int"/>
             <Param name="ReplaceStrings" label="String mentioned above is replaced by a default text when applying" type="select">
               <Option label="Yes" type="int">1</Option>
               <Option label="No" type="int">0</Option>

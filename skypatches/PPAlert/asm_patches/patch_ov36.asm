@@ -1,5 +1,5 @@
-.orga 0x2DF00 ; starting point
-.area 0x100
+.orga 0x30F70+0xBC ; starting point
+.area 0x54
 PPAlert:
 	sub r3, r3, #1
 	cmp r3, #0
