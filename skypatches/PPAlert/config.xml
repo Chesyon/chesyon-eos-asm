@@ -1,0 +1,33 @@
+<PMD2>
+  <!--=======================================================================-->
+  <!--ASM Patches Constants-->
+  <!--=======================================================================-->
+  <!--Put the data defining your patch here.-->
+  <ASMPatchesConstants>
+
+    <!--*******************-->
+    <!--Patches list-->
+    <!--*******************-->
+    <!--Patching steps for applying various asm patches on the game-->
+    <Patches>
+      <Game id="EoS_NA" id2="EoS_EU" id3="EoS_JP">
+        <Patch id="PPAlert">
+	        <OpenBin filepath="overlay/overlay_0029.bin">
+            <Include filename ="patch_ov29.asm"/>
+          </OpenBin>
+	        <OpenBin filepath="overlay/overlay_0036.bin">
+            <Include filename ="patch_ov36.asm"/>
+          </OpenBin>
+          <Parameters>
+            <Param name="StringID" label="String ID for push dialogue" min="0" max="65535" default="9240" type="int"/>
+            <Param name="ReplaceStrings" label="String mentioned above is replaced by a default text when applying" type="select">
+              <Option label="Yes" type="int">1</Option>
+              <Option label="No" type="int">0</Option>
+            </Param>
+          </Parameters>
+        </Patch>
+      </Game>
+    </Patches>
+  </ASMPatchesConstants>
+</PMD2>
+
