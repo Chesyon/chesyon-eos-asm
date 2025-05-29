@@ -1,5 +1,6 @@
 # PartyUpdatesMap
-Causes all party members to update the map, even if offscreen, like they do in PSMD.
+Causes all party members to update the map, even if offscreen, like they do in PSMD. Requested by $tarman25.
+![Demonstration of PartyUpdatesMap in PMD: Crowned](crowned.png)
 
 ## The technical details
 This is a very wacky patch. Due to my unending pursuit of optimization, half of this code is in overlay29, and half of it is in overlay36.
