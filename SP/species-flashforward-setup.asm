@@ -1,9 +1,7 @@
-; THIS SP IS A WORK IN PROGRESS, DO NOT USE IT AS IS!
-
 ; ------------------------------------------------------------------------------
 ; Species Flashforward Setup - by Chesyon, written for blaze_2150
 ; Sets the hero and partner to their highest evolved form, storing their original forms to SCENARIO_SUB1 and SCENARIO_SUB2 respectively.
-; Call Irdkwia's "Remove Party" process before this one! (MAYBE TODO: include that in this...?)
+; If using this causes the game to crash, call Irdkwia's "Remove Party" process before this! Hopefully that won't happen though!
 ; No parameters.
 ; Returns: Nothing.
 ; ------------------------------------------------------------------------------
@@ -12,7 +10,7 @@
 .nds
 .arm
 
-.definelabel MaxSize, 0x810 ; TODO: calculate value once code is done
+.definelabel MaxSize, 0x80 ; calculated 0x78- giving a bit of wiggle room in case i was wrong.
 
 ; Uncomment the correct version
 
@@ -46,20 +44,23 @@
 			add r1,r4,#0x5 ; save to script variable [5 + iterator] (starts at SUB1)
 			mov r2,r5 ; we want to save the species value
 			bl SaveScriptVariableValue ; save the value!
+			sub sp,sp,#0x28 ; allocate 28 bytes of space on the stack for the GetEvolutions output
 			EvoLoop:
-				mov r0,r5
+				mov r0,r5 ; check evolutions of current (r5) species
+				mov r1,sp ; save output to stack
 				mov r2,#0x1 ; we don't care about sprite size here
 				mov r3,#0x0 ; suuuure i guess we can block shedinja
 				bl GetEvolutions
 				cmp r0,#0x0
 				beq EndEvoLoop ; if this current form cannot evolve, stop evolving
-				; TODO: figure out how to access the array stored in r1 to store a new species id into r5.
+				ldrh r5,[sp] ; get the first entry on the output array of GetEvolutions
 				b EvoLoop
 			EndEvoLoop:
+			add sp,sp,#0x28 ; unallocate those bytes we allocated earlier
 			strh r5,[r6,#+0x4] ; store new monster id into chimecho assembly
-			cmp r4,#0x1 ; we want to run this loop twice
+			cmp r4,#0x1 ; we want to run this loop twice (once for hero once for partner)
 			addlt r4,r4,#0x1
-			addlt r6,#0x44
+			addlt r6,r6,#0x44
 			blt MonsterUpdateLoop
 		pop {r4-r6}
 		b ProcJumpAddress ; Always branch at the end
