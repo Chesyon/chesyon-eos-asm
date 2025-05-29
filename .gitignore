@@ -1,0 +1,4 @@
+*.skytemple
+!skypatches/Template/tests/test.nds.skytemple
+*.nds
+chesyon-eos-asm.code-workspace
