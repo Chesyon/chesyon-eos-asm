@@ -1,5 +1,5 @@
 # Skypatch template
-This template contains the files inside of a skypatch, and some helper files for compilation[^!] and testing.
+This template contains the files inside of a skypatch, and some helper files for compilation[^1] and testing.
 
 This is the template I use to make all of my skypatches; though I've cleaned it up a little bit. The goal of this template is to make creation of ASM patches easier, for both more experienced hackers and people just starting out with ASM.
 
