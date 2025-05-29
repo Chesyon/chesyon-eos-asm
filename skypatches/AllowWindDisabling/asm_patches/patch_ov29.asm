@@ -1,0 +1,2 @@
+.org WindCounterCheckHook
+    bl WindCounterCheck
