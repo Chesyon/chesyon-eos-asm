@@ -33,26 +33,26 @@
 	.org ProcStartAddress
 	.area MaxSize ; Define the size of the area
         push {r4-r6}
-        mov r4,#5
-        ldr r5,=AssemblyPointer
-        ldr r5,[r5]
+        mov  r4,#5
+        ldr  r5,=AssemblyPointer
+        ldr  r5,[r5]
         MonsterRestoreLoop:
-            mov r1,r4 ; variable is either 5 or 6 depending on iteration
-            mov r2,#0
-            bl LoadScriptVariableValueAtIndex ; load first byte of species from variable to r0
-            mov r6,r0 ; store first byte in r6
-            mov r1,r4
-            mov r2,#1
-            bl LoadScriptVariableValueAtIndex ; load second byte to r0
-            add r0,r6,r0,lsl #8  ; add the two bytes together to get the proper species in r0.
-            strh r0,[r5,#+0x4] ; update chimecho assembly species at the index
-            cmp r4,#6 ; is this the first loop?
+            mov   r1,r4                          ; variable is either 5 or 6 depending on iteration
+            mov   r2,#0
+            bl    LoadScriptVariableValueAtIndex ; load first byte of species from variable to r0
+            mov   r6,r0                          ; store first byte in r6
+            mov   r1,r4
+            mov   r2,#1
+            bl    LoadScriptVariableValueAtIndex ; load second byte to r0
+            add   r0,r6,r0,lsl #8                ; add the two bytes together to get the proper species in r0.
+            strh  r0,[r5,#+0x4]                  ; update chimecho assembly species at the index
+            cmp   r4,#6                          ; is this the first loop?
             addlt r4,r4,#1
             addlt r5,r5,#0x44
-            blt MonsterRestoreLoop ; if so, go back to the start of the loop and do everything again with the partner.
+            blt   MonsterRestoreLoop             ; if so, go back to the start of the loop and do everything again with the partner.
         pop {r4-r6}
-		b ProcJumpAddress ; Always branch at the end
-		.pool
+	b   ProcJumpAddress ; Always branch at the end
+	.pool
 	.endarea
 .close
 
