@@ -24,7 +24,7 @@ from skytemple_files.patch.category import PatchCategory
 from skytemple_files.patch.handler.abstract import AbstractPatchHandler
 from skytemple_files.common.i18n_util import f, _
 
-MODIFIED_INSTRUCTION = 0xE320F000
+MODIFIED_INSTRUCTION = 0xE1A00000
 OFFSET_EU = 0x238DE18-0x238AC80
 OFFSET_US = 0x238D2E4-0x238A140
 OFFSET_JP = 0x238E83C-0x238B6A0
@@ -46,7 +46,7 @@ class PatchHandler(AbstractPatchHandler):
 
     @property
     def version(self) -> str:
-        return '0.1.0'
+        return '0.1.1'
 
     def is_applied(self, rom: NintendoDSRom, config: Pmd2Data) -> bool:
          overlay19 = get_binary_from_rom(rom, config.bin_sections.overlay19)
