@@ -1,0 +1,24 @@
+<PMD2>
+  <!--=======================================================================-->
+  <!--ASM Patches Constants-->
+  <!--=======================================================================-->
+  <!--Put the data defining your patch here.-->
+  <ASMPatchesConstants>
+
+    <!--*******************-->
+    <!--Patches list-->
+    <!--*******************-->
+    <!--Patching steps for applying various asm patches on the game-->
+    <Patches>
+      <Game id="EoS_NA" id2="EoS_EU" id3="EoS_JP">
+        <Patch id="DisableIsFutureDungeon">
+	      <OpenBin filepath="arm9.bin">
+            <Include filename ="patch_arm9.asm"/>
+          </OpenBin>
+          <!-- Copy the above three lines for every file the patch modifies. -->
+        </Patch>
+      </Game>
+    </Patches>
+  </ASMPatchesConstants>
+</PMD2>
+
