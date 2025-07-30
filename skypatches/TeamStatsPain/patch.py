@@ -21,7 +21,7 @@ from ndspy.rom import NintendoDSRom
 from skytemple_files.common.util import read_u32, get_binary_from_rom
 from skytemple_files.common.ppmdu_config.data import Pmd2Data, GAME_VERSION_EOS, GAME_REGION_US, GAME_REGION_EU, GAME_REGION_JP
 from skytemple_files.patch.category import PatchCategory
-from skytemple_files.patch.handler.abstract import AbstractPatchHandler
+from skytemple_files.patch.handler.abstract import AbstractPatchHandler, DependantPatch
 from skytemple_files.common.i18n_util import f, _
 
 ORIGINAL_INSTRUCTION = 0xE3190004 # hex representation of tst r9,0x4 (which we are changing to tst r9,0x5)
@@ -30,7 +30,7 @@ OFFSET_EU = 0x22C1728-0x22BD3C0 # location of tst r9,0x4 minus starting point of
 OFFSET_JP = 0x22C2590-0x22BE220
 
 
-class PatchHandler(AbstractPatchHandler):
+class PatchHandler(AbstractPatchHandler, DependantPatch):
 
     @property
     def name(self) -> str:
@@ -46,7 +46,10 @@ class PatchHandler(AbstractPatchHandler):
 
     @property
     def version(self) -> str:
-        return '0.1.0'
+        return '0.1.1'
+
+    def depends_on(self) -> list[str]:
+        return ["ExtraSpace"]
 
     def is_applied(self, rom: NintendoDSRom, config: Pmd2Data) -> bool:
          overlay10 = get_binary_from_rom(rom, config.bin_sections.overlay10)
