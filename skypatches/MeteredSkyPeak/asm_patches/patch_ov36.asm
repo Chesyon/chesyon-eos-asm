@@ -36,10 +36,11 @@ CustomTextCheck:
         mov  r0,r4
         pop  r4
         ldr  r1,=FMT_STRING
-        mov  r2,r3
+        mov  r2,#100
+        mul  r2,r3,r2
         bl   sprintf
         b    GetFloorNumStringRet
 FMT_STRING:
-    .asciiz "[CS:V]%d00[CR] M"
+    .asciiz "[CS:V]%d[CR] M"
 .pool
 .endarea
