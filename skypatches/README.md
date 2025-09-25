@@ -18,6 +18,7 @@ The below table lists the default starting point of each patch and their sizes; 
 | BetterEscortClients        | 0x54             | 0x30FC4            | 0x23D8044    | 0x58 |
 | ExpMultiplier              | 0xAC             | 0x3101C            | 0x23D809C    | 0x10 |
 | PPAlert                    | 0xBC             | 0x3102C            | 0x23D80AC    | 0x54 |
+| MeteredSkyPeak             | 0x110            | 0x31080            | 0x23D8100    | 0x84 |
 
 ## What about PMD: Crowned?
 If you're looking for my patches made for and used exclusively in my ROMhack, PMD: Crowned- they're not here, sorry! Crowned uses [c-of-time](https://github.com/SkyTemple/c-of-time), which isn't skypatches. if you *really* want to use code from that, just ask- I can adapt it into a skypatch if doing so is feasible, and if not I can at the very least give you the C code.
