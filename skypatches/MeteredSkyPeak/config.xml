@@ -18,6 +18,10 @@
 	      <OpenBin filepath="overlay/overlay_0036.bin">
             <Include filename ="patch_ov36.asm"/>
           </OpenBin>
+          <Parameters>
+            <Param name="MIN_SKY_PEAK_ID" label="First dungeon ID" min="1" max="255" default="111" type="int"/>
+            <Param name="MAX_SKY_PEAK_ID" label="Last dungeon ID" min="1" max="255" default="122" type="int"/>
+          </Parameters>
           <!-- Copy the above three lines for every file the patch modifies. -->
         </Patch>
       </Game>

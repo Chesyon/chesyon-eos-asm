@@ -28,7 +28,7 @@ class PatchHandler(AbstractPatchHandler, DependantPatch):
 
     @property
     def version(self) -> str:
-        return '0.1.1'
+        return '0.1.2'
 
     def depends_on(self) -> list[str]:
         return ["ExtraSpace"]
