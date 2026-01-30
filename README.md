@@ -8,3 +8,8 @@ Everything is categorized into a few separate categories:
 
 All code in this repository is free to use and modify with credit to me alongside any additional authors listed for code you use.
 I write lots of comments in my code, and there's a template to write your own skypatches, so I hope that this repository can also serve as a helpful resource for people who want to learn ASM.
+
+## License
+Sorry, gotta get this out of the way. I try to keep things as free to use and tinker with as possible, but I have legal obligations.
+
+All **skypatches** in this repository are distributed under [GPLv3](https://github.com/Chesyon/chesyon-eos-asm/blob/main/LICENSE_GPLv3), because they have a GPLv3 dependency ([skytemple-files](https://github.com/SkyTemple/skytemple-files)). However, all **source code**, including everything in the SP folder, is licensed under [MIT](https://github.com/Chesyon/Pilgrim/blob/main/LICENSE_MIT). Refer to https://chesyon.me/eos-licenses.html for info on what this means.
