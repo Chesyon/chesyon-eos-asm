@@ -10,6 +10,7 @@ EoS *has* glyphs for 0-9 in its credits font, but the code responsible for getti
 
 ### Why have them in the font if they can't even be used?
 ┐('～\`*)┌
+
 Chunsoft moment, probably. Since `staffont.dat` doesn't follow any particular character encoding (to my knowledge), all the logic for getting the index of any character had to be done by hand, hence all the weird stuff in this function. Since numbers never actually get used anywhere in the vanilla credits, I wouldn't be surprised if they just removed that piece of the logic (or never even wrote it) as some kind of tiny optimization. As for why they didn't bother to remove the glyphs from the font, I have no clue. Too much hassle, maybe? Not that I'm complaining.
 
 ### EU angers me
