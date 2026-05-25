@@ -1,0 +1,42 @@
+<PMD2>
+  <!--=======================================================================-->
+  <!--ASM Patches Constants-->
+  <!--=======================================================================-->
+  <!--Put the data defining your patch here.-->
+  <ASMPatchesConstants>
+
+    <!--*******************-->
+    <!--Patches list-->
+    <!--*******************-->
+    <!--Patching steps for applying various asm patches on the game-->
+    <Patches>
+      <Game id="EoS_NA" id2="EoS_EU" id3="EoS_JP">
+        <Patch id="LessTaxes">
+	      <OpenBin filepath="arm9.bin">
+            <Include filename ="patch_arm9.asm"/>
+          </OpenBin>
+	      <OpenBin filepath="overlay/overlay_0036.bin">
+            <Include filename ="patch_ov36_eu_na.asm"/>
+          </OpenBin>
+          <Parameters>
+            <Param name='Percent' label='Percent player "keeps" relative to given money (x10)' min="1" max="10" default="9" type="int"/>
+          </Parameters>
+        </Patch>
+      </Game>
+      <Game id="EoS_JP">
+        <Patch id="LessTaxes">
+	      <OpenBin filepath="arm9.bin">
+            <Include filename ="patch_arm9.asm"/>
+          </OpenBin>
+	      <OpenBin filepath="overlay/overlay_0036.bin">
+            <Include filename ="patch_ov36_jp.asm"/>
+          </OpenBin>
+          <Parameters>
+            <Param name='Percent' label='Percent player "keeps" relative to given money (x10)' min="1" max="10" default="9" type="int"/>
+          </Parameters>
+        </Patch>
+      </Game>
+    </Patches>
+  </ASMPatchesConstants>
+</PMD2>
+
