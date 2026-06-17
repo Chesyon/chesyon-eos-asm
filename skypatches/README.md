@@ -22,6 +22,7 @@ The below table lists the default starting point of each patch and their sizes; 
 | SwapLeaderPosition         | 0x194            | 0x31104            | 0x23D8184    | 0x90 |
 | NumbersInCredits           | 0x224            | 0x31194            | 0x23D8214    | 0x18 |
 | LessTaxes                  | 0x23C            | 0x311AC            | 0x23D822C    | 0x18 |
+| AutofillDefaultName        | 0x254            | 0x311C4            | 0x23D8244    | 0x24 |
 
 ## What about PMD: Crowned?
 If you're looking for my patches made for and used exclusively in my ROMhack, PMD: Crowned- they're not here, sorry! Crowned uses [c-of-time](https://github.com/SkyTemple/c-of-time), which isn't skypatches. if you *really* want to use code from that, just ask- I can adapt it into a skypatch if doing so is feasible, and if not I can at the very least give you the C code.
