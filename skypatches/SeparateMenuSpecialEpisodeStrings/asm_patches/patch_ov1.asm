@@ -1,0 +1,11 @@
+; vanilla adds 0x72 and 0x100 to make 0x172 (370)
+; we add 0x4A and 0x3C00 to make 0x3C4A (15434)
+.org AddSmall
+.area 0x4
+  add r0,r6,#0x4A ; vanilla: 0x72
+.endarea
+
+.org AddBig
+.area 0x4
+  add r0,r0,#0x3C00 ; vanilla: 0x100
+.endarea
