@@ -1,0 +1,30 @@
+<PMD2>
+  <!--=======================================================================-->
+  <!--ASM Patches Constants-->
+  <!--=======================================================================-->
+  <!--Put the data defining your patch here.-->
+  <ASMPatchesConstants>
+
+    <!--*******************-->
+    <!--Patches list-->
+    <!--*******************-->
+    <!--Patching steps for applying various asm patches on the game-->
+    <Patches>
+      <Game id="EoS_NA" id2="EoS_EU" id3="EoS_JP">
+        <Patch id="ContinueDungeonMusic">
+	      <OpenBin filepath="overlay/overlay_0029.bin">
+            <Include filename ="patch_ov29.asm"/>
+          </OpenBin>
+	      <OpenBin filepath="overlay/overlay_0036.bin">
+            <Include filename ="patch_ov36.asm"/>
+          </OpenBin>
+          <Parameters>
+            <Param name='PFLAG_CONTINUE_ON_LOSS' label='Performance flag to allow music to continue on victory in a dungeon' min="1" max="63" default="62" type="int"/>
+            <Param name='PFLAG_CONTINUE_ON_VICTORY' label='Performance flag to allow music to continue on victory in a dungeon' min="1" max="63" default="63" type="int"/>
+          </Parameters>
+        </Patch>
+      </Game>
+    </Patches>
+  </ASMPatchesConstants>
+</PMD2>
+
