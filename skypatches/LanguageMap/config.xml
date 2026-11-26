@@ -1,0 +1,63 @@
+<PMD2>
+  <!--=======================================================================-->
+  <!--ASM Patches Constants-->
+  <!--=======================================================================-->
+  <!--Put the data defining your patch here.-->
+  <ASMPatchesConstants>
+
+    <!--*******************-->
+    <!--Patches list-->
+    <!--*******************-->
+    <!--Patching steps for applying various asm patches on the game-->
+    <Patches>
+      <Game id="EoS_NA" id2="EoS_EU" id3="EoS_JP">
+        <Patch id="LanguageMap">
+	      <OpenBin filepath="arm9.bin">
+            <Include filename ="patch_arm9.asm"/>
+          </OpenBin>
+	      <OpenBin filepath="overlay/overlay_0036.bin">
+            <Include filename ="patch_ov36.asm"/>
+          </OpenBin>
+          <Parameters>
+            <Param name="ENGLISH_REMAP" label="Treat English firmware language as:" type="select">
+              <Option label="English" type="int">0</Option>
+              <Option label="French" type="int">1</Option>
+              <Option label="German" type="int">2</Option>
+              <Option label="Italian" type="int">3</Option>
+              <Option label="Spanish" type="int">4</Option>
+            </Param>
+            <Param name="FRENCH_REMAP" label="Treat French firmware language as:" type="select">
+              <Option label="English" type="int">0</Option>
+              <Option label="French" type="int">1</Option>
+              <Option label="German" type="int">2</Option>
+              <Option label="Italian" type="int">3</Option>
+              <Option label="Spanish" type="int">4</Option>
+            </Param>
+            <Param name="GERMAN_REMAP" label="Treat German firmware language as:" type="select">
+              <Option label="English" type="int">0</Option>
+              <Option label="French" type="int">1</Option>
+              <Option label="German" type="int">2</Option>
+              <Option label="Italian" type="int">3</Option>
+              <Option label="Spanish" type="int">4</Option>
+            </Param>
+            <Param name="ITALIAN_REMAP" label="Treat Italian firmware language as:" type="select">
+              <Option label="English" type="int">0</Option>
+              <Option label="French" type="int">1</Option>
+              <Option label="German" type="int">2</Option>
+              <Option label="Italian" type="int">3</Option>
+              <Option label="Spanish" type="int">4</Option>
+            </Param>
+            <Param name="SPANISH_REMAP" label="Treat Spanish firmware language as:" type="select">
+              <Option label="English" type="int">0</Option>
+              <Option label="French" type="int">1</Option>
+              <Option label="German" type="int">2</Option>
+              <Option label="Italian" type="int">3</Option>
+              <Option label="Spanish" type="int">4</Option>
+            </Param>
+          </Parameters>
+        </Patch>
+      </Game>
+    </Patches>
+  </ASMPatchesConstants>
+</PMD2>
+

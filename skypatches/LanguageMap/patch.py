@@ -1,0 +1,59 @@
+#  Copyright 2026 Chesyon
+#
+#  This source code is licensed under the MIT license: https://github.com/Chesyon/chesyon-eos-asm/blob/main/LICENSE_MIT
+#  However, the distribution is licensed under GPLv3: https://github.com/Chesyon/chesyon-eos-asm/blob/main/LICENSE_GPLv3
+#  For a non-legalese version of what this means, see https://chesyon.me/eos-licenses.html.
+
+from typing import Callable
+
+from ndspy.rom import NintendoDSRom
+
+from skytemple_files.common.util import read_u32, get_binary_from_rom
+from skytemple_files.common.ppmdu_config.data import Pmd2Data, GAME_VERSION_EOS, GAME_REGION_EU
+from skytemple_files.patch.category import PatchCategory
+from skytemple_files.patch.handler.abstract import AbstractPatchHandler, DependantPatch
+from skytemple_files.common.i18n_util import f, _
+
+# the following variables are used in the is_applied check below.
+ORIGINAL_INSTRUCTION = 0xE12FFF1E
+OFFSET_EU = 0x20690
+
+class PatchHandler(AbstractPatchHandler, DependantPatch):
+
+    @property
+    def name(self) -> str:
+        return 'LanguageMap'
+
+    @property
+    def description(self) -> str:
+        return "Allows mapping firmware languages to different game languages."
+
+    @property
+    def author(self) -> str:
+        return 'Chesyon'
+
+    @property
+    def version(self) -> str:
+        return '0.1.0'
+
+    def depends_on(self) -> list[str]:
+        return ["ExtraSpace"]
+
+    # Change all instances of overlay29 in this function to the desired overlay to check.
+    def is_applied(self, rom: NintendoDSRom, config: Pmd2Data) -> bool:
+         arm9 = get_binary_from_rom(rom, config.bin_sections.arm9)
+         if config.game_version == GAME_VERSION_EOS:
+            if config.game_region == GAME_REGION_EU:
+                return read_u32(arm9, OFFSET_EU) != ORIGINAL_INSTRUCTION
+         raise NotImplementedError()
+
+    def apply(self, apply: Callable[[], None], rom: NintendoDSRom, config: Pmd2Data) -> None:
+         param = self.get_parameters()
+         # violating convention to get around a skemple bug
+         for key in param.keys():
+            param[key] = int(param[key]) # force all params to be integers
+         self.__parameters = param
+         apply() # Apply the patch
+
+    def unapply(self, unapply: Callable[[], None], rom: NintendoDSRom, config: Pmd2Data):
+        raise NotImplementedError()
